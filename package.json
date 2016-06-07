@@ -1,0 +1,22 @@
+{
+  "name": "web-socket-client",
+  "version": "1.0.0",
+  "description": "a simple web socket client example",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "websocket",
+    "client"
+  ],
+  "author": "CF Grugan",
+  "license": "MIT",
+  "dependencies": {
+    "websocket": "^1.0.23"
+  }
+}
