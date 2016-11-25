@@ -1,4 +1,5 @@
 var WebSocketClient = require('websocket').client;
+var wss = require('websocket').server;
 var client = new WebSocketClient();
 var http = require('http');
 var url = require('url');
@@ -8,7 +9,6 @@ client.on('connectFailed', function(error) {
 });
 
 client.on('connect', function(connection) {
-  connection.sendUTF('listen');
   console.log('WebSocket Client Connected');
   connection.on('error', function(error) {
     console.log('Connection Error: ' + error.toString());
@@ -34,7 +34,8 @@ http.createServer(function(request, response) {
   var urlParts = url.parse(request.url).path.substring(1).split('/');
   console.log(urlParts);
   if (urlParts[0] === 'listen') {
-    client.connect('ws://10.0.0.12:8080/', 'echo-protocol');
+    // make sure this web socket url matches the ip of the edison device
+    client.connect('ws://relay.local:8080/', 'echo-protocol');
   }
   response.writeHead(200, {'content-type': 'text/html'});
   response.write('<!DOCTYPE "html">');
