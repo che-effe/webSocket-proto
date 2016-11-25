@@ -22,12 +22,11 @@ wss.on('connection', function connection(ws) {
   // or ws.upgradeReq.headers.cookie (see http://stackoverflow.com/a/16395220/151312)
 
   ws.on('message', function incoming(message) {
-    if(message==="Test-Message"){
       wss.clients.forEach(function each(client) {
+        console.log('received: %s', message);
+
         if (client !== ws) client.send(message);
       });
-     }
-    console.log('received: %s', message);
   });
 
   ws.send('something');

@@ -11,7 +11,7 @@
                alert("WebSocket is supported by your Browser!");
 
                // Let us open a web socket
-               var ws = new WebSocket("ws://localhost:4080");
+               var ws = new WebSocket("ws://10.0.0.7:4080");
 
                ws.onopen = function()
                {
@@ -39,15 +39,15 @@
                alert("WebSocket NOT supported by your Browser!");
             }
          }
-         function SendMessage()
+         function ToggleHappyPath()
          {
 
                // Let us open a web socket
-               var ws = new WebSocket("ws://localhost:4080");
+               var ws = new WebSocket("ws://10.0.0.7:4080");
                ws.onopen = function()
                {
                   // Web Socket is connected, send data using send()
-                  ws.send("Test-Message");
+                  ws.send("toggle-Happy-Path");
                };
          }
       </script>
@@ -57,7 +57,7 @@
 
       <div id="sse">
          <a href="javascript:WebSocketTest()">Run WebSocket</a>
-         <a href="javascript:SendMessage()">SendMessage</a>
+         <a href="javascript:ToggleHappyPath()">Toggle Happy Path</a>
       </div>
 
    </body>
