@@ -50,6 +50,26 @@
                   ws.send("toggle-Happy-Path");
                };
          }
+         function sendNotification()
+         {
+
+               // Let us open a web socket
+               var ws = new WebSocket("ws://10.0.0.7:4080");
+               ws.onopen = function()
+               {
+                 var notification = {
+                   type:'notification',
+                   img: 'http://sportsteamhistory.com/images/nfllogos/philadelphia_eagles.png',
+                   header: 'Eagles Vs. Cowboys',
+                   text: 'Watch Now',
+                   action: function() {
+                     this.fire('Eagles');
+                   }
+                }
+                  // Web Socket is connected, send data using send()
+                ws.send(JSON.stringify(notification));
+              }
+        };
       </script>
 
    </head>
@@ -58,6 +78,7 @@
       <div id="sse">
          <a href="javascript:WebSocketTest()">Run WebSocket</a>
          <a href="javascript:ToggleHappyPath()">Toggle Happy Path</a>
+         <a href="javascript:sendNotification()">Send Eagles Notification</a>
       </div>
 
    </body>
